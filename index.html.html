@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>for you, always ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+:root{--bg:#f8f1ed;--paper:#fffdf9;--ink:#30262a;--muted:#88777a;--rose:#c9788d;--line:#e9d9d6;--dark:#30262a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif}
+button{font:inherit}.wrap{max-width:1120px;margin:auto;padding:0 22px}
+.hero{min-height:100vh;display:grid;place-items:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#f8eee9,#f6e8ed)}
+.hero:before{content:"";position:absolute;width:520px;height:520px;border:1px solid #d8b9bd;border-radius:50%;left:-180px;top:-180px}
+.hero:after{content:"";position:absolute;width:360px;height:360px;border:1px solid #ddc5c1;border-radius:50%;right:-130px;bottom:-100px}
+.hero-content{text-align:center;position:relative;z-index:2;max-width:760px}
+.kicker{text-transform:uppercase;letter-spacing:.28em;font-size:11px;color:var(--rose)}
+.hero h1{font:500 clamp(60px,12vw,120px)/.84 "Playfair Display",serif;margin:25px 0 20px}
+.hero h1 em{font-weight:500}.hero p{max-width:520px;margin:auto;color:var(--muted);font-size:16px;line-height:1.8}
+.enter{margin-top:28px;background:var(--dark);color:#fff;border:0;padding:14px 25px;border-radius:100px;cursor:pointer}
+.scroll-note{position:absolute;bottom:25px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#9a8589}
+nav{position:sticky;top:0;z-index:30;background:#f8f1ede8;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1120px;margin:auto;padding:12px 22px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+nav button{border:0;background:none;color:var(--muted);font-size:12px;cursor:pointer}
+section{padding:100px 0}.section-title{text-align:center;max-width:650px;margin:0 auto 45px}.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--rose)}h2{font:500 clamp(38px,7vw,64px)/1 "Playfair Display",serif;margin:10px 0 15px}.section-title p{color:var(--muted);line-height:1.8}
+.paper{background:var(--paper);border:1px solid var(--line);border-radius:4px;box-shadow:0 15px 50px #5a3b350d}
+.about{display:grid;grid-template-columns:1fr 1.25fr;gap:35px;align-items:stretch}.note{padding:40px;display:flex;flex-direction:column;justify-content:center}.note .script{font:italic 28px "Playfair Display";line-height:1.4}.note p{color:var(--muted);line-height:1.8}.signature{margin-top:25px;font:italic 20px "Playfair Display"}
+
+.timeline{position:relative;max-width:800px;margin:auto}.timeline:before{content:"";position:absolute;left:22px;top:0;bottom:0;width:1px;background:#d9c6c3}.event{position:relative;padding:0 0 42px 65px}.dot{position:absolute;left:16px;top:2px;width:13px;height:13px;background:var(--rose);border-radius:50%;border:3px solid var(--bg)}.date{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--rose)}.event h3{font:500 25px "Playfair Display";margin:8px 0}.event p{color:var(--muted);line-height:1.7;margin:0}
+.game{max-width:700px;margin:auto;padding:35px;text-align:center}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:25px}.choice{border:1px solid var(--line);background:#fff8f7;padding:18px;border-radius:16px;cursor:pointer;min-height:80px}.choice:hover,.choice.active{background:#f4e1e4;border-color:var(--rose)}#answer{color:var(--rose);font-weight:600;min-height:25px;margin-top:18px}
+.reasons{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.reason{background:var(--paper);border:1px solid var(--line);padding:23px;border-radius:18px;cursor:pointer;position:relative;min-height:120px;transition:.2s}.reason:hover{transform:translateY(-3px)}.reason.open{background:#f8e8eb}.reason-num{font-size:10px;color:var(--rose);letter-spacing:.15em}.reason-text{font:18px/1.5 "Playfair Display";display:block;margin-top:10px}.heart{position:absolute;right:17px;top:16px;color:#cfa4ad}
+.counter{text-align:center;color:var(--muted);font-size:12px;margin:25px}.bar{height:5px;background:#eadcdf;max-width:550px;margin:auto;border-radius:10px;overflow:hidden}.bar i{display:block;height:100%;background:var(--rose);width:0;transition:.4s}
+.envelopes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.envelope{border:1px solid var(--line);background:var(--paper);padding:30px 20px;text-align:center;border-radius:20px;cursor:pointer}.env-icon{font-size:38px}.envelope h3{font:500 22px "Playfair Display"}.letter{display:none;color:var(--muted);line-height:1.8}.envelope.open .letter{display:block}.envelope.open .prompt{display:none}
+.meter{max-width:650px;margin:auto;text-align:center}.meter-track{height:22px;background:#eadcdf;border-radius:30px;overflow:hidden;margin:25px 0}.meter-fill{height:100%;width:0;background:linear-gradient(90deg,#d18a9b,#a95e74);transition:1.2s}.meter button{border:0;background:var(--dark);color:white;border-radius:50px;padding:13px 22px;cursor:pointer}
+.final{text-align:center;max-width:800px;margin:auto;padding:55px 30px;background:var(--paper);border:1px solid var(--line)}.final p{color:var(--muted);line-height:1.9}.final .big{font-size:55px}.restart{border:1px solid var(--line);background:transparent;padding:12px 20px;border-radius:30px;cursor:pointer}
+footer{text-align:center;padding:50px;color:#9a8589;font-size:11px;letter-spacing:.1em}
+@media(max-width:700px){.about{grid-template-columns:1fr}.choices,.envelopes{grid-template-columns:1fr}.reasons{grid-template-columns:1fr}.nav-inner{gap:12px}}
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="hero-content">
+    <div class="kicker">a tiny corner of the internet, made for you</div>
+    <h1>for <em>you</em>, always.</h1>
+    <p>A little collection of memories, tiny reasons, inside jokes, questions and things I probably don't say enough.</p>
+    <button class="enter" onclick="go('about')">come inside ♡</button>
+  </div>
+  <div class="scroll-note">scroll slowly ↓</div>
+</header>
+
+<nav><div class="nav-inner">
+<button onclick="go('about')">about</button><button onclick="go('memories')">memories</button><button onclick="go('game')">little game</button><button onclick="go('reasons')">50 things</button><button onclick="go('letters')">open when</button><button onclick="go('ending')">one last thing</button>
+</div></nav>
+
+<main class="wrap">
+<section id="about">
+<div class="section-title"><div class="eyebrow">01 · a note</div><h2>you became a collection of little things.</h2><p>Not one giant reason. Hundreds of tiny ones.</p></div>
+<div class="about" style="grid-template-columns:1fr;max-width:760px;margin:auto">
+<div class="paper note"><div class="script">“Some people become memories. You became part of mine.”</div><p>It's the random conversations, the laughing over absolutely nothing, the days that somehow became stories, and all the ordinary moments that I wouldn't trade.</p><div class="signature">— me, obviously ♡</div></div></div>
+</section>
+
+<section id="memories">
+<div class="section-title"><div class="eyebrow">02 · our little timeline</div><h2>the moments I keep replaying.</h2><p>Edit these with your actual dates and memories.</p></div>
+<div class="timeline">
+<div class="event"><span class="dot"></span><div class="date">the beginning</div><h3>When it all started</h3><p>That moment when “us” stopped being just a possibility and became a real thing.</p></div>
+<div class="event"><span class="dot"></span><div class="date">school days</div><h3>The legendary bunking days</h3><p>Because apparently some of the best memories happen when you're supposed to be somewhere else.</p></div>
+<div class="event"><span class="dot"></span><div class="date">random afternoons</div><h3>Those long afternoons</h3><p>The kind where time disappears and suddenly you've been talking, laughing and existing together for hours.</p></div>
+<div class="event"><span class="dot"></span><div class="date">our dates</div><h3>The little adventures</h3><p>Cars, dates, random plans and all the moments that weren't supposed to become core memories but did.</p></div>
+</div>
+</section>
+
+<section id="game">
+<div class="section-title"><div class="eyebrow">03 · tiny test</div><h2>how well do you know me?</h2><p>Choose what you think my answer would be.</p></div>
+<div class="paper game">
+<h3 style="font:500 25px 'Playfair Display'">My favourite kind of memory with you?</h3>
+<div class="choices"><button class="choice" data-a="car">random car conversations</button><button class="choice" data-a="school">getting away with school chaos</button><button class="choice" data-a="afternoon">long afternoons together</button></div>
+<div id="answer"></div>
+</div>
+</section>
+
+<section id="reasons">
+<div class="section-title"><div class="eyebrow">04 · the famous list</div><h2>50 things I like about you.</h2><p>Tap them. Collect the hearts. Don't rush this part.</p></div>
+<div class="bar"><i id="fill"></i></div><div class="counter" id="counter">0 / 50 opened</div><div class="reasons" id="reasonsGrid"></div>
+</section>
+
+<section id="letters">
+<div class="section-title"><div class="eyebrow">05 · choose an envelope</div><h2>open when you need it.</h2><p>Three tiny notes, for three different versions of you.</p></div>
+<div class="envelopes">
+<div class="envelope"><div class="env-icon">♡</div><div class="prompt"><h3>Open when you're having a bad day</h3><small>tap the envelope</small></div><div class="letter">Whatever happened today, it doesn't get to decide your worth. Take a breath. Tomorrow is allowed to be softer. And yes, you are still ridiculously lovable. ♡</div></div>
+<div class="envelope"><div class="env-icon">✦</div><div class="prompt"><h3>Open when you miss me</h3><small>tap the envelope</small></div><div class="letter">Go look at one of our favourite memories. Then remember that there are still so many more waiting for us. ♡</div></div>
+<div class="envelope"><div class="env-icon">♡</div><div class="prompt"><h3>Open when you doubt yourself</h3><small>tap the envelope</small></div><div class="letter">You are capable of more than you think. I hope you see even a little of the person I see when I look at you.</div></div>
+</div>
+</section>
+
+<section>
+<div class="section-title"><div class="eyebrow">06 · completely scientific</div><h2>the “how much do I like you?” meter.</h2></div>
+<div class="paper meter" style="padding:35px"><div style="font:italic 24px 'Playfair Display'">calibrating...</div><div class="meter-track"><div class="meter-fill" id="meter"></div></div><div id="meterText" style="color:var(--muted);min-height:25px">press the button to calculate</div><button onclick="measure()">calculate</button></div>
+</section>
+
+<section id="ending">
+<div class="section-title"><div class="eyebrow">07 · one last thing</div><h2>if this whole website had one sentence...</h2></div>
+<div class="final">
+<div class="big">♡</div>
+<p>I could make lists forever. I could collect memories, screenshots, dates, songs, inside jokes and little moments until this page had no end.</p>
+<p>But if I had to keep only one thing, it would be this:</p>
+<h2 style="font-size:42px">I'm really, really glad it's you.</h2>
+<p>And that's probably my favourite thing of all.</p>
+<button class="restart" onclick="go('top')">back to the beginning ↑</button>
+</div>
+</section>
+</main>
+<footer>made with too many feelings & a questionable amount of HTML ♡</footer>
+
+<script>
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth"})}
+const reasons=[
+"The way you make me laugh, even when I’m not in the mood.","How comfortable everything feels around you.","Your smile — it genuinely makes my day better.","The little things you remember about me.","How you make ordinary moments feel special.","Your sense of humour.","The way you listen when I actually need to talk.","How you somehow know when something is wrong.","Your random little habits.","The way you look at me when you’re happy.","How you make me feel appreciated.","Your patience with me.","The stupid jokes we somehow find hilarious.","How easy it is to be myself around you.","The memories we’ve made together.","The unexpected conversations that turn into hours.","How you make me feel like I matter.","Your honesty.","The way you support the things I care about.","How you can turn a boring day into a good one.","Your little expressions.","The way you get excited about things you love.","How you make me feel understood.","Our inside jokes that make absolutely no sense to anyone else.","The way you notice tiny details.","How you always manage to make me smile.","Your confidence when you really care about something.","The way you make memories without even trying.","How you can be completely ridiculous and still somehow adorable.","Your kindness.","The way you celebrate my little wins.","How you make me feel safe being honest.","Your voice when you’re excited about something.","The random messages that instantly improve my mood.","How you never have to pretend to be someone else.","The way we can go from serious conversations to laughing in seconds.","Your thoughtfulness.","How you make even quiet moments comfortable.","The stories you tell.","The way you care about the people close to you.","How you encourage me when I doubt myself.","The little surprises you don’t realise mean a lot.","How you make me look forward to seeing you.","The memories of our random adventures.","How you can make me laugh with just one look.","The way you’re there when it actually matters.","How much personality you have.","The fact that there’s always something new to discover about you.","How many genuinely happy memories I associate with you.","And most importantly… I like you simply because you’re you."
+];
+const grid=document.getElementById("reasonsGrid"),opened=new Set();
+reasons.forEach((r,i)=>{let b=document.createElement("button");b.className="reason";b.innerHTML=`<span class="reason-num">${String(i+1).padStart(2,"0")}</span><span class="reason-text">${r}</span><span class="heart">♡</span>`;b.onclick=()=>{if(!opened.has(i)){opened.add(i);b.classList.add("open");b.querySelector(".heart").textContent="♥";document.getElementById("counter").textContent=`${opened.size} / 50 opened`;document.getElementById("fill").style.width=(opened.size*2)+"%"}};grid.appendChild(b)});
+document.querySelectorAll(".choice").forEach(b=>b.onclick=()=>{document.querySelectorAll(".choice").forEach(x=>x.classList.remove("active"));b.classList.add("active");let a=b.dataset.a;document.getElementById("answer").textContent=a==="afternoon"?"Correct. The random, unplanned afternoons win. ♡":a==="car"?"Very close. Car conversations are definitely up there. ♡":"Also iconic. School chaos deserves its own chapter. ♡"});
+document.querySelectorAll(".envelope").forEach(e=>e.onclick=()=>e.classList.toggle("open"));
+function measure(){let m=document.getElementById("meter"),t=document.getElementById("meterText");m.style.width="100%";setTimeout(()=>t.textContent="Result: scientifically impossible to measure. The scale ran out. ♡",500)}
+</script>
+</body>
+</html>
